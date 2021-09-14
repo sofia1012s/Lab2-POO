@@ -75,8 +75,12 @@ public class Programa {
 
     }
 
-    public int ciclos() {
+    public void ciclos() {
         ciclos++;
+    }
+
+    public int getCiclos()
+    {
         return ciclos;
     }
 
