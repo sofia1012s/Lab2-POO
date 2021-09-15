@@ -5,7 +5,7 @@ import java.util.Set;
 public class Controlador {
     public static void main(String[] args) {
         Vista view = new Vista();
-        //Programa programa;
+        // Programa programa;
         RAM ram = null;
         int tamanoRAM = 0;
         int disponibleRAM = 0;
@@ -14,7 +14,6 @@ public class Controlador {
         ArrayList<Programa> programasiniciales = new ArrayList<Programa>();
         ArrayList<Programa> colaProgramas = new ArrayList<Programa>();
         Set<String> listaProgramas = new HashSet<>();
-
 
         view.bienvenida();
         int opcion = 0;
@@ -71,7 +70,7 @@ public class Controlador {
                     opcion2 = view.opInicioP();
                     while (opcion2 != 2) {
                         int opcion3 = view.inicioPrograma();
-                        ram.ingresarProgramasIniciales(opcion3, programasiniciales,listaProgramas);
+                        ram.ingresarProgramasIniciales(opcion3, programasiniciales, listaProgramas);
                         opcion2 = view.opInicioP();
                     }
                     ram.ingresarprogramasActuales(programasiniciales, programasActuales);
@@ -79,6 +78,14 @@ public class Controlador {
                     break;
 
                 case 2:
+                    int opcion4 = 0;
+                    opcion4 = view.nuevoPrograma();
+                    while (opcion4 != 2) {
+                        int opcion5 = view.opPrograma();
+                        ram.ingresarprogramasCola(opcion5, colaProgramas, listaProgramas);
+                        opcion4 = view.nuevoPrograma();
+                    }
+                    ram.ingresarprogramasActuales(colaProgramas, programasActuales);
                     break;
 
                 case 3:
@@ -99,7 +106,7 @@ public class Controlador {
                     break;
 
                 case 6:
-                view.mostrarProgramas(listaProgramas);
+                    view.mostrarProgramas(listaProgramas);
                     break;
 
                 case 7:

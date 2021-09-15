@@ -28,8 +28,8 @@ public class RAM {
         return programasIniciales;
     }
 
-    public void ingresarprogramasCola(int opcion,Set<String> programas) {
-        colaProgramas.add(new Programa(opcion,programas));
+    public void ingresarprogramasCola(int opcion, ArrayList<Programa> programasC,Set<String> programas) {
+        programasC.add(new Programa(opcion,programas));
     }
 
     public ArrayList<Programa> getProgramasCola() {

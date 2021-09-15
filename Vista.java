@@ -73,24 +73,41 @@ public class Vista {
 
     public int memoriaTotal(int memoriaTotal) {
         int total = (memoriaTotal * 64) / 1024;
-        System.out.println("\nMemoria Total" + "\nCantidad en GB: " + total);
+        System.out.println("\nMemoria Total" + "\nValor aproximado en GB: " + total);
         return total;
     }
 
     public int memoriaDisponible(int disponibleRAM) {
         int total = (disponibleRAM * 64) / 1024;
-        System.out.println("\nMemoria Disponible" + "\nCantidad en GB: " + total);
+        System.out.println("\nMemoria Disponible" + "\nValor aproximado en GB: " + total);
         return total;
     }
 
     public int memoriaUsada(int memoriaUsada) {
         int total = (memoriaUsada * 64) / 1024;
-        System.out.println("\nMemoria Usada" + "\nCantidad en GB: " + total);
+        System.out.println("\nMemoria Usada" + "\nValor aproximado en GB: " + total);
         return total;
     }
 
     public void mostrarProgramas(Set<String> programas) {
         System.out.println(programas);
+    }
+
+    public int nuevoPrograma() {
+        int op = 0;
+        System.out.println(
+                "\nDesea agregar un nuevo programa a la cola" + "\n1. Si" + "\n2. No\n");
+        op = scan.nextInt();
+        return op;
+    }
+
+    public int opPrograma() {
+        int op = 0;
+        String s = "\nEscoja un programa: \n" + "1. Google Chrome\n" + "2. Firefox\n" + "3. Zoom\n" + "4. Whatsapp\n"
+                + "5. Telegram\n" + "6. Visual Studio\n" + "7. Mail\n" + "8. Contactos\n" + "9. Word\n";
+        System.out.println(s);
+        op = scan.nextInt();
+        return op;
     }
 
 }
