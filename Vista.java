@@ -55,7 +55,7 @@ public class Vista {
 
     public int opInicioP() {
         int op = 0;
-        System.out.println("\nDesea agregar un programa con el que la RAM se inicie?" + "\n1. Si" + "\n2. No");
+        System.out.println("\nDesea agregar un programa u otro programa con el que la RAM se inicie?" + "\n1. Si" + "\n2. No\n");
         op = scan.nextInt();
         return op;
     }

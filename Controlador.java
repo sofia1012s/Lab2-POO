@@ -60,12 +60,12 @@ public class Controlador {
                     }
 
                     int opcion2 = 0;
-
+                    opcion2 = view.opInicioP();
                     while (opcion2 != 2) {
-                        opcion2 = view.opInicioP();
                         int opcion3 = view.inicioPrograma();
                         ram.ingresarProgramasIniciales(opcion3);
                         programasIniciales = ram.getProgramasIniciales();
+                        opcion2 = view.opInicioP();
                     }
 
                     break;
