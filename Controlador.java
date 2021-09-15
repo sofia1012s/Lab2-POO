@@ -3,7 +3,6 @@ import java.util.ArrayList;
 public class Controlador {
     public static void main(String[] args) {
         Vista view = new Vista();
-        Programa programa;
         int tamanoRAM = 0;
         RAM ram = new RAM(tamanoRAM);
         int disponibleRAM;
