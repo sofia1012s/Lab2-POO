@@ -90,6 +90,8 @@ public class Vista {
     }
 
     public void mostrarProgramas(Set<String> programas) {
+        System.out.println(
+            "\nLos siguientes programas estan usando actualmente la memoria RAM: \n");
         System.out.println(programas);
     }
 
@@ -108,6 +110,12 @@ public class Vista {
         System.out.println(s);
         op = scan.nextInt();
         return op;
+    }
+
+    public void mostrarCola(Set<String> programas) {
+        System.out.println(
+                "\nLos siguientes programas estan esperando ser anadidos a la memoria RAM: \n");
+        System.out.println(programas);
     }
 
 }

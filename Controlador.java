@@ -14,6 +14,7 @@ public class Controlador {
         ArrayList<Programa> programasiniciales = new ArrayList<Programa>();
         ArrayList<Programa> colaProgramas = new ArrayList<Programa>();
         Set<String> listaProgramas = new HashSet<>();
+        Set<String> listaProgramasCola = new HashSet<>();
 
         view.bienvenida();
         int opcion = 0;
@@ -82,10 +83,9 @@ public class Controlador {
                     opcion4 = view.nuevoPrograma();
                     while (opcion4 != 2) {
                         int opcion5 = view.opPrograma();
-                        ram.ingresarprogramasCola(opcion5, colaProgramas, listaProgramas);
+                        ram.ingresarprogramasCola(opcion5, colaProgramas, listaProgramasCola);
                         opcion4 = view.nuevoPrograma();
                     }
-                    ram.ingresarprogramasActuales(colaProgramas, programasActuales);
                     break;
 
                 case 3:
@@ -110,6 +110,7 @@ public class Controlador {
                     break;
 
                 case 7:
+                view.mostrarCola(listaProgramasCola);
                     break;
 
                 case 8:
