@@ -13,39 +13,44 @@ public class RAM {
     private int ciclosReloj = 0;
 
     public RAM(int t) {
-        t = tipo;
+        t = tamanoTotal;
         programasIniciales = new ArrayList<Programa>();
         colaProgramas = new ArrayList<Programa>();
         programasActuales = new ArrayList<Programa>();
     }
 
-    public void ingresarProgramasIniciales(int opcion) {
-        programasIniciales.add(new Programa(opcion));
+    public void ingresarProgramasIniciales(int opcion, ArrayList<Programa> programasI) {
+        programasI.add(new Programa(opcion));
     }
 
     public ArrayList<Programa> getProgramasIniciales() {
         return programasIniciales;
     }
 
-    public ArrayList<Programa> programasCola(int opcion) {
+    public void ingresarprogramasCola(int opcion) {
         colaProgramas.add(new Programa(opcion));
+    }
+
+    public ArrayList<Programa> getProgramasCola() {
         return colaProgramas;
     }
 
-    public ArrayList<Programa> programasActuales() {
-        for (int i = 0; i < programasIniciales.size(); i++) {
-            programa = programasIniciales.get(i);
+    public void ingresarprogramasActuales(ArrayList<Programa> programasI, ArrayList<Programa> programasA) {
+        for (int i = 0; i < programasI.size(); i++) {
+            programa = programasI.get(i);
             int bloques = programa.bloques();
 
             for (int j = 0; j < bloques; j++) {
-                programasActuales.add(programa);
+                programasA.add(programa);
             }
         }
+    }
+
+    public ArrayList<Programa> getProgramasActuales() {
         return programasActuales;
     }
 
-    public int memoriaTotal(int t) {
-        t = tamanoTotal;
+    public int getmemoriaTotal() {
         return tamanoTotal;
     }
 
@@ -54,8 +59,8 @@ public class RAM {
         return tamanoDisponible;
     }
 
-    public int memoriaUso() {
-        tamanoUso = programasActuales.size();
+    public int memoriaUso(ArrayList<Programa> programasA) {
+        tamanoUso = programasA.size();
         return tamanoUso;
     }
 

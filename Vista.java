@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Vista {
     private Scanner scan = new Scanner(System.in);
@@ -71,13 +72,23 @@ public class Vista {
 
     public int memoriaTotal(int memoriaTotal) {
         int total = (memoriaTotal * 64) / 1024;
-        System.out.println("\nCantidad en GB: " + total);
+        System.out.println("\nMemoria Total" + "\nCantidad en GB: " + total);
         return total;
     }
 
     public int memoriaDisponible(int disponibleRAM) {
         int total = (disponibleRAM * 64) / 1024;
-        System.out.println("\nCantidad en GB: " + total);
+        System.out.println("\nMemoria Disponible" +"\nCantidad en GB: " + total);
         return total;
+    }
+
+    public int memoriaUsada(int memoriaUsada) {
+        int total = (memoriaUsada * 64) / 1024;
+        System.out.println("\nMemoria Usada" +"\nCantidad en GB: " + total);
+        return total;
+    }
+
+    public String mostrarProgramas() {
+        return"";
     }
 }

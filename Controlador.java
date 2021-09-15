@@ -3,14 +3,13 @@ import java.util.ArrayList;
 public class Controlador {
     public static void main(String[] args) {
         Vista view = new Vista();
-
+        Programa programa;
+        RAM ram = null;
         int tamanoRAM = 0;
-        RAM ram = new RAM(tamanoRAM);
-        int disponibleRAM;
-        int usoRAM;
-        
-        ArrayList<Programa> programasActuales;
-        ArrayList<Programa> programasIniciales;
+        int disponibleRAM = 0;
+        int usoRAM = 0;
+        ArrayList<Programa> programasActuales = new ArrayList<Programa>();
+        ArrayList<Programa> programasiniciales = new ArrayList<Programa>();
         ArrayList<Programa> colaProgramas;
 
         view.bienvenida();
@@ -23,11 +22,9 @@ public class Controlador {
                 case 1:
                     view.nuevaRAM();
                     int tipo = view.tipoRAM();
-                    ram = new RAM(tipo);
 
                     if (tipo == 1) {
                         int op = view.tamanoRAM();
-
                         switch (op) {
                             case 1: // 4GB
                                 tamanoRAM = 64;
@@ -61,19 +58,24 @@ public class Controlador {
                         tamanoRAM = 64; // Comienza con 4 GB
                     }
 
+                    ram = new RAM(tamanoRAM);
+                    //disponibleRAM = 0;
+                    //usoRAM = 0;
+                    programasActuales = new ArrayList<Programa>();
+                    programasiniciales = new ArrayList<Programa>();
+
                     int opcion2 = 0;
                     opcion2 = view.opInicioP();
                     while (opcion2 != 2) {
                         int opcion3 = view.inicioPrograma();
-                        ram.ingresarProgramasIniciales(opcion3);
-                        programasIniciales = ram.getProgramasIniciales();
+                        ram.ingresarProgramasIniciales(opcion3, programasiniciales);
                         opcion2 = view.opInicioP();
                     }
+                    ram.ingresarprogramasActuales(programasiniciales, programasActuales);
 
                     break;
 
                 case 2:
-                    colaProgramas = ram.programasCola(opcion);
                     break;
 
                 case 3:
@@ -81,16 +83,19 @@ public class Controlador {
                     break;
 
                 case 4:
-                    programasActuales = ram.programasActuales();
-                    usoRAM = programasActuales.size();
+                    usoRAM = ram.memoriaUso(programasActuales);
+                    System.out.println(tamanoRAM);
+                    System.out.println(usoRAM);
                     disponibleRAM = ram.memoriaDisponible(tamanoRAM, usoRAM);
                     view.memoriaDisponible(disponibleRAM);
                     break;
 
                 case 5:
+
                     break;
 
                 case 6:
+
                     break;
 
                 case 7:
