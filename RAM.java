@@ -14,10 +14,16 @@ public class RAM {
 
     public RAM(int t) {
         t = tipo;
+        programasIniciales = new ArrayList<Programa>();
+        colaProgramas = new ArrayList<Programa>();
+        programasActuales = new ArrayList<Programa>();
     }
 
-    public ArrayList<Programa> ingresarProgramasIniciales(int opcion) {
+    public void ingresarProgramasIniciales(int opcion) {
         programasIniciales.add(new Programa(opcion));
+    }
+
+    public ArrayList<Programa> getProgramasIniciales() {
         return programasIniciales;
     }
 
@@ -43,7 +49,7 @@ public class RAM {
         return tamanoTotal;
     }
 
-    public int memoriaDisponible() {
+    public int memoriaDisponible(int tamanoTotal, int tamanoUso) {
         tamanoDisponible = tamanoTotal - tamanoUso;
         return tamanoDisponible;
     }
@@ -56,7 +62,8 @@ public class RAM {
     public int cicloReloj() {
         ciclosReloj++;
 
-        // Actualiza los ciclos de reloj de cada programa activo y busca los que ya finalizaron
+        // Actualiza los ciclos de reloj de cada programa activo y busca los que ya
+        // finalizaron
         for (int i = 0; i < programasActuales.size(); i++) {
             programa = programasActuales.get(i);
             programa.ciclos();
