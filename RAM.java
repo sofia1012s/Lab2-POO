@@ -56,8 +56,7 @@ public class RAM {
     public int cicloReloj() {
         ciclosReloj++;
 
-        // Actualiza los ciclos de reloj de cada programa activo y busca los que ya
-        // finalizaron
+        // Actualiza los ciclos de reloj de cada programa activo y busca los que ya finalizaron
         for (int i = 0; i < programasActuales.size(); i++) {
             programa = programasActuales.get(i);
             programa.ciclos();
