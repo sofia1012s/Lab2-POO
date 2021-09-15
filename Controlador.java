@@ -3,10 +3,12 @@ import java.util.ArrayList;
 public class Controlador {
     public static void main(String[] args) {
         Vista view = new Vista();
+
         int tamanoRAM = 0;
         RAM ram = new RAM(tamanoRAM);
         int disponibleRAM;
         int usoRAM;
+        
         ArrayList<Programa> programasActuales;
         ArrayList<Programa> programasIniciales;
         ArrayList<Programa> colaProgramas;
