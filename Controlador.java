@@ -59,8 +59,8 @@ public class Controlador {
                     }
 
                     ram = new RAM(tamanoRAM);
-                    //disponibleRAM = 0;
-                    //usoRAM = 0;
+                    // disponibleRAM = 0;
+                    // usoRAM = 0;
                     programasActuales = new ArrayList<Programa>();
                     programasiniciales = new ArrayList<Programa>();
 
@@ -91,7 +91,8 @@ public class Controlador {
                     break;
 
                 case 5:
-
+                    usoRAM = ram.memoriaUso(programasActuales);
+                    view.memoriaUsada(usoRAM);
                     break;
 
                 case 6:

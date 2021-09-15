@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.ArrayList;
 
 public class Vista {
     private Scanner scan = new Scanner(System.in);
@@ -64,7 +63,7 @@ public class Vista {
     public int inicioPrograma() {
         int op = 0;
         String s = "\nEscoja un programa: \n" + "1. Google Chrome\n" + "2. Firefox\n" + "3. Zoom\n" + "4. Whatsapp\n"
-                + "5. Telegram\n" + "6. Visual Studio\n" + "7. Mail\n" + "8. Contactos\n";
+                + "5. Telegram\n" + "6. Visual Studio\n" + "7. Mail\n" + "8. Contactos\n" + "9. Word\n";
         System.out.println(s);
         op = scan.nextInt();
         return op;
