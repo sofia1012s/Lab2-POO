@@ -1,16 +1,20 @@
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Controlador {
     public static void main(String[] args) {
         Vista view = new Vista();
-        Programa programa;
+        //Programa programa;
         RAM ram = null;
         int tamanoRAM = 0;
         int disponibleRAM = 0;
         int usoRAM = 0;
         ArrayList<Programa> programasActuales = new ArrayList<Programa>();
         ArrayList<Programa> programasiniciales = new ArrayList<Programa>();
-        ArrayList<Programa> colaProgramas;
+        ArrayList<Programa> colaProgramas = new ArrayList<Programa>();
+        Set<String> listaProgramas = new HashSet<>();
+
 
         view.bienvenida();
         int opcion = 0;
@@ -59,16 +63,15 @@ public class Controlador {
                     }
 
                     ram = new RAM(tamanoRAM);
-                    // disponibleRAM = 0;
-                    // usoRAM = 0;
                     programasActuales = new ArrayList<Programa>();
                     programasiniciales = new ArrayList<Programa>();
+                    colaProgramas = new ArrayList<Programa>();
 
                     int opcion2 = 0;
                     opcion2 = view.opInicioP();
                     while (opcion2 != 2) {
                         int opcion3 = view.inicioPrograma();
-                        ram.ingresarProgramasIniciales(opcion3, programasiniciales);
+                        ram.ingresarProgramasIniciales(opcion3, programasiniciales,listaProgramas);
                         opcion2 = view.opInicioP();
                     }
                     ram.ingresarprogramasActuales(programasiniciales, programasActuales);
@@ -96,7 +99,7 @@ public class Controlador {
                     break;
 
                 case 6:
-
+                view.mostrarProgramas(listaProgramas);
                     break;
 
                 case 7:

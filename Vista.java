@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Set;
 
 public class Vista {
     private Scanner scan = new Scanner(System.in);
@@ -55,7 +56,8 @@ public class Vista {
 
     public int opInicioP() {
         int op = 0;
-        System.out.println("\nDesea agregar un programa u otro programa con el que la RAM se inicie?" + "\n1. Si" + "\n2. No\n");
+        System.out.println(
+                "\nDesea agregar un programa u otro programa con el que la RAM se inicie?" + "\n1. Si" + "\n2. No\n");
         op = scan.nextInt();
         return op;
     }
@@ -77,17 +79,18 @@ public class Vista {
 
     public int memoriaDisponible(int disponibleRAM) {
         int total = (disponibleRAM * 64) / 1024;
-        System.out.println("\nMemoria Disponible" +"\nCantidad en GB: " + total);
+        System.out.println("\nMemoria Disponible" + "\nCantidad en GB: " + total);
         return total;
     }
 
     public int memoriaUsada(int memoriaUsada) {
         int total = (memoriaUsada * 64) / 1024;
-        System.out.println("\nMemoria Usada" +"\nCantidad en GB: " + total);
+        System.out.println("\nMemoria Usada" + "\nCantidad en GB: " + total);
         return total;
     }
 
-    public String mostrarProgramas() {
-        return"";
+    public void mostrarProgramas(Set<String> programas) {
+        System.out.println(programas);
     }
+
 }

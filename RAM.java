@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Set;
 
 public class RAM {
     private Programa programa;
@@ -19,16 +20,16 @@ public class RAM {
         programasActuales = new ArrayList<Programa>();
     }
 
-    public void ingresarProgramasIniciales(int opcion, ArrayList<Programa> programasI) {
-        programasI.add(new Programa(opcion));
+    public void ingresarProgramasIniciales(int opcion, ArrayList<Programa> programasI,Set<String> programas) {
+        programasI.add(new Programa(opcion,programas));
     }
 
     public ArrayList<Programa> getProgramasIniciales() {
         return programasIniciales;
     }
 
-    public void ingresarprogramasCola(int opcion) {
-        colaProgramas.add(new Programa(opcion));
+    public void ingresarprogramasCola(int opcion,Set<String> programas) {
+        colaProgramas.add(new Programa(opcion,programas));
     }
 
     public ArrayList<Programa> getProgramasCola() {
