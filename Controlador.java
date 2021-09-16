@@ -110,13 +110,17 @@ public class Controlador {
                     break;
 
                 case 7:
-                view.mostrarCola(listaProgramasCola);
+                    view.mostrarCola(listaProgramasCola);
                     break;
 
                 case 8:
+                    int opcion6 = 0;
+                    opcion6 = view.opEspacios();
+                    view.espacios(programasActuales, opcion6);
                     break;
 
                 case 9:
+                    view.estadoMemoria(programasActuales);
                     break;
 
                 case 10:

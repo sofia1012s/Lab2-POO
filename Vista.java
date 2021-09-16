@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.Set;
+import java.util.ArrayList;
 
 public class Vista {
     private Scanner scan = new Scanner(System.in);
@@ -90,15 +91,13 @@ public class Vista {
     }
 
     public void mostrarProgramas(Set<String> programas) {
-        System.out.println(
-            "\nLos siguientes programas estan usando actualmente la memoria RAM: \n");
+        System.out.println("\nLos siguientes programas estan usando actualmente la memoria RAM: \n");
         System.out.println(programas);
     }
 
     public int nuevoPrograma() {
         int op = 0;
-        System.out.println(
-                "\nDesea agregar un nuevo programa a la cola" + "\n1. Si" + "\n2. No\n");
+        System.out.println("\nDesea agregar un nuevo programa a la cola" + "\n1. Si" + "\n2. No\n");
         op = scan.nextInt();
         return op;
     }
@@ -113,9 +112,84 @@ public class Vista {
     }
 
     public void mostrarCola(Set<String> programas) {
-        System.out.println(
-                "\nLos siguientes programas estan esperando ser anadidos a la memoria RAM: \n");
+        System.out.println("\nLos siguientes programas estan esperando ser anadidos a la memoria RAM: \n");
         System.out.println(programas);
+    }
+
+    public int opEspacios() {
+        int op = 0;
+        String s = "\nEscoja el programa del cual desea observar los espacios en la RAM: \n" + "1. Google Chrome\n"
+                + "2. Firefox\n" + "3. Zoom\n" + "4. Whatsapp\n" + "5. Telegram\n" + "6. Visual Studio\n" + "7. Mail\n"
+                + "8. Contactos\n" + "9. Word\n";
+        System.out.println(s);
+        op = scan.nextInt();
+        return op;
+    }
+
+    public void espacios(ArrayList<Programa> programasActuales, int opcion) {
+        String nombrePrograma = "";
+        int contador = 0;
+
+        switch (opcion) {
+            case 1: // Google Chrome
+                nombrePrograma = "Google Chrome";
+                break;
+
+            case 2: // Firefox
+                nombrePrograma = "Firefox";
+                break;
+
+            case 3: // Zoom
+                nombrePrograma = "Zoom";
+                break;
+
+            case 4: // Whatsapp
+                nombrePrograma = "Whatsapp";
+                break;
+
+            case 5: // Telegram
+                nombrePrograma = "Telegram";
+                break;
+
+            case 6: // Visual Studio
+                nombrePrograma = "Visual Studio";
+                break;
+
+            case 7: // Mail
+                nombrePrograma = "Mail";
+                break;
+
+            case 8: // Contactos
+                nombrePrograma = "Contactos";
+                break;
+
+            case 9: // Word
+                nombrePrograma = "Word";
+                break;
+
+            default: // Si es una opción incorrecta
+                break;
+        }
+
+        for (int i = 0; i < programasActuales.size(); i++) {
+            Programa programa = programasActuales.get(i);
+            String nombre = programa.nombrePrograma();
+            if (nombre == nombrePrograma) {
+                contador++;
+            }
+        }
+        System.out.println("\nEl programa ocupa: " + contador + " bloques de la memoria RAM\n");
+    }
+
+    public void estadoMemoria(ArrayList<Programa> programasActuales) {
+        System.out.println("\nLos espacios de la RAM se encuentran ocupados de la siguiente manera: \n");
+
+        for (int j = 0; j < programasActuales.size(); j++){
+            Programa programa = programasActuales.get(j);
+            
+            String nombre = programa.nombrePrograma();
+            System.out.println("[ " + nombre + " ]");
+        }
     }
 
 }
