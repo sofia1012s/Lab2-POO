@@ -10,6 +10,7 @@ public class Controlador {
         int tamanoRAM = 0;
         int disponibleRAM = 0;
         int usoRAM = 0;
+        int ciclosR = 0;
         ArrayList<Programa> programasActuales = new ArrayList<Programa>();
         ArrayList<Programa> programasiniciales = new ArrayList<Programa>();
         ArrayList<Programa> colaProgramas = new ArrayList<Programa>();
@@ -60,6 +61,7 @@ public class Controlador {
 
                     else if (tipo == 2) {
                         tamanoRAM = 64; // Comienza con 4 GB
+
                     }
 
                     ram = new RAM(tamanoRAM);
@@ -74,8 +76,38 @@ public class Controlador {
                         ram.ingresarProgramasIniciales(opcion3, programasiniciales, listaProgramas);
                         opcion2 = view.opInicioP();
                     }
-                    ram.ingresarprogramasActuales(programasiniciales, programasActuales);
 
+                    if (tipo == 2) {
+                        if (programasiniciales.size() >= tamanoRAM) {
+                            tamanoRAM = tamanoRAM * 2; // 8 GB
+                            ram.ingresarprogramasActuales(programasiniciales, programasActuales);
+                        }
+
+                        else {
+                            ram.ingresarprogramasActuales(programasiniciales, programasActuales);
+                        }
+
+                        if (programasiniciales.size() < tamanoRAM && tamanoRAM > 64) {
+                            tamanoRAM = tamanoRAM / 2;
+                            ram.ingresarprogramasActuales(programasiniciales, programasActuales);
+                        }
+
+                        else {
+                            ram.ingresarprogramasActuales(programasiniciales, programasActuales);
+                        }
+                    }
+
+                    if (tipo == 1) {
+                        
+                        if (programasiniciales.size() >= tamanoRAM) {
+                            view.memoriaLlena();
+                        }
+
+                        else {
+                            ram.ingresarprogramasActuales(programasiniciales, programasActuales);
+                        } 
+                        
+                    }
                     break;
 
                 case 2:
@@ -97,6 +129,9 @@ public class Controlador {
                     System.out.println(tamanoRAM);
                     System.out.println(usoRAM);
                     disponibleRAM = ram.memoriaDisponible(tamanoRAM, usoRAM);
+                    if (disponibleRAM < 0) {
+                        disponibleRAM = 0;
+                    }
                     view.memoriaDisponible(disponibleRAM);
                     break;
 
@@ -124,10 +159,14 @@ public class Controlador {
                     break;
 
                 case 10:
+                    view.reloj();
+                    ciclosR = ram.cicloReloj(programasActuales, ciclosR);
+                    view.ciclos(ciclosR, programasActuales);
                     break;
 
                 case 11:
                     view.despedida();
+                    
                     break;
                 default:
                     break;

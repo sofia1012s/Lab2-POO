@@ -20,20 +20,12 @@ public class RAM {
         programasActuales = new ArrayList<Programa>();
     }
 
-    public void ingresarProgramasIniciales(int opcion, ArrayList<Programa> programasI,Set<String> programas) {
-        programasI.add(new Programa(opcion,programas));
+    public void ingresarProgramasIniciales(int opcion, ArrayList<Programa> programasI, Set<String> programas) {
+        programasI.add(new Programa(opcion, programas));
     }
 
-    public ArrayList<Programa> getProgramasIniciales() {
-        return programasIniciales;
-    }
-
-    public void ingresarprogramasCola(int opcion, ArrayList<Programa> programasC,Set<String> programas) {
-        programasC.add(new Programa(opcion,programas));
-    }
-
-    public ArrayList<Programa> getProgramasCola() {
-        return colaProgramas;
+    public void ingresarprogramasCola(int opcion, ArrayList<Programa> programasC, Set<String> programas) {
+        programasC.add(new Programa(opcion, programas));
     }
 
     public void ingresarprogramasActuales(ArrayList<Programa> programasI, ArrayList<Programa> programasA) {
@@ -41,18 +33,11 @@ public class RAM {
             programa = programasI.get(i);
             int bloques = programa.bloques();
 
-            for (int j = 0; j < bloques; j++) {
+            for (int k = 0; k < bloques; k++) {
                 programasA.add(programa);
             }
+
         }
-    }
-
-    public ArrayList<Programa> getProgramasActuales() {
-        return programasActuales;
-    }
-
-    public int getmemoriaTotal() {
-        return tamanoTotal;
     }
 
     public int memoriaDisponible(int tamanoTotal, int tamanoUso) {
@@ -65,50 +50,38 @@ public class RAM {
         return tamanoUso;
     }
 
-    public int cicloReloj() {
-        ciclosReloj++;
+    public int cicloReloj(ArrayList<Programa> programasA, int ciclosR) {
+        ciclosR++;
 
         // Actualiza los ciclos de reloj de cada programa activo y busca los que ya
         // finalizaron
-        for (int i = 0; i < programasActuales.size(); i++) {
-            programa = programasActuales.get(i);
-            programa.ciclos();
+        /*
+        for (int i = 0; i < programasA.size(); i++) {
+            Programa programa = programasA.get(i);
+            int ciclos = programa.getCiclos();
 
-            if (programa.getCiclos() > ciclosReloj) {
+            if (ciclos > ciclosReloj) {
                 programasActuales.remove(i);
             }
         }
-
-        // Añado los programas en la cola
-        if (tipo == 1) {
-            if (tamanoTotal != tamanoUso) {
-                for (int i = 0; i < colaProgramas.size(); i++) {
-                    programa = colaProgramas.get(i);
-                    int bloques = programa.bloques();
-
-                    for (int j = 0; j < bloques; j++) {
-                        colaProgramas.add(programa);
-                    }
-                }
-            }
-
-            else {
-                // ya no añade los programas
-            }
-
-        }
-
-        else if (tipo == 2) {
-            for (int i = 0; i < colaProgramas.size(); i++) {
-                programa = colaProgramas.get(i);
-                int bloques = programa.bloques();
-
-                for (int j = 0; j < bloques; j++) {
-                    colaProgramas.add(programa);
-                }
-            }
-        }
-
-        return ciclosReloj;
+        */
+        /*
+         * // Añado los programas en la cola if (tipo == 1) { if (tamanoTotal !=
+         * tamanoUso) { for (int i = 0; i < colaProgramas.size(); i++) { programa =
+         * colaProgramas.get(i); int bloques = programa.bloques();
+         * 
+         * for (int j = 0; j < bloques; j++) { colaProgramas.add(programa); } } }
+         * 
+         * else { // ya no añade los programas }
+         * 
+         * }
+         * 
+         * else if (tipo == 2) { for (int i = 0; i < colaProgramas.size(); i++) {
+         * programa = colaProgramas.get(i); int bloques = programa.bloques();
+         * 
+         * for (int j = 0; j < bloques; j++) { colaProgramas.add(programa); } } }
+         */
+        return ciclosR;
     }
+
 }

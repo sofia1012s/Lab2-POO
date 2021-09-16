@@ -74,6 +74,7 @@ public class Programa {
             default: // Si es una opción incorrecta
                 bloques = 0;
                 ciclos = 0;
+                nombrePrograma = null;
                 break;
         }
     }

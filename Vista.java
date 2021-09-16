@@ -184,12 +184,38 @@ public class Vista {
     public void estadoMemoria(ArrayList<Programa> programasActuales) {
         System.out.println("\nLos espacios de la RAM se encuentran ocupados de la siguiente manera: \n");
 
-        for (int j = 0; j < programasActuales.size(); j++){
+        for (int j = 0; j < programasActuales.size(); j++) {
             Programa programa = programasActuales.get(j);
-            
+
             String nombre = programa.nombrePrograma();
             System.out.println("[ " + nombre + " ]");
         }
     }
 
+    public void memoriaLlena() {
+        System.out.print(
+                "\nLa memoria se ha llenado, no puede añadir más programas.\nEspere a que un programa termine de ejecutarse e intente nuevamente.");
+    }
+
+    public void reloj() {
+        System.out.print("\nLos datos de la RAM se actualizaran.\n");
+    }
+
+    public void ciclos(int ciclosR, ArrayList<Programa> programasActuales) {
+
+        System.out.print("\nEl sistema ha realizado " + ciclosR + " ciclo de reloj.\n");
+        System.out.print(
+                "\nA continuacion, se observaran los ciclos restantes que tiene cada bloque de programa en la RAM."
+                        + "\nIndicando cuantos ciclos de reloj hacen falta para que el bloque se vacie: \n\n");
+
+        for (int i = 0; i < programasActuales.size(); i++) {
+            Programa programa = programasActuales.get(i);
+            int ciclos = programa.getCiclos();
+            String nombre = programa.nombrePrograma();
+
+            int ciclosRestante = ciclos - ciclosR;
+
+            System.out.println(nombre + " tiene " + ciclosRestante + " ciclos restantes.");
+        }
+    }
 }
