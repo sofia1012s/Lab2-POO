@@ -1,3 +1,13 @@
+
+/******************************************************************************
+ * Programa.java
+ * 
+ * @author Sofía Salguero
+ * @version 17/09/2021 
+ * Clase programa, se encarga de realizar todas las acciones de los programas 
+ * y configurar los parametros de cada programa distinto
+ ******************************************************************************/
+
 import java.util.Set;
 
 public class Programa {
@@ -5,67 +15,72 @@ public class Programa {
     private int ciclos;
     private String nombrePrograma;
 
-    public Programa(int opcion,Set<String> programas) {
+    /**
+     * 
+     * @param opcion
+     * @param programas
+     */
+    public Programa(int opcion, Set<String> programas) {
 
         switch (opcion) {
             case 1: // Google Chrome
-                bloques = 32; //2.07 GB
+                bloques = 32; // 2.07 GB
                 ciclos = 8;
                 nombrePrograma = "Google Chrome";
                 programas.add(nombrePrograma);
                 break;
 
             case 2: // Firefox
-                bloques = 1; //0.064 GB
+                bloques = 1; // 0.064 GB
                 ciclos = 16;
                 nombrePrograma = "Firefox";
                 programas.add(nombrePrograma);
                 break;
 
             case 3: // Zoom
-                bloques = 5; //0.32 GB
+                bloques = 5; // 0.32 GB
                 ciclos = 60;
                 nombrePrograma = "Zoom";
                 programas.add(nombrePrograma);
                 break;
 
             case 4: // Whatsapp
-                bloques = 2; //0.128 GB
+                bloques = 2; // 0.128 GB
                 ciclos = 8;
                 nombrePrograma = "Whatsapp";
                 programas.add(nombrePrograma);
                 break;
 
             case 5: // Telegram
-                bloques = 2; //0.128 GB
+                bloques = 2; // 0.128 GB
                 ciclos = 8;
                 nombrePrograma = "Telegram";
                 programas.add(nombrePrograma);
                 break;
 
             case 6: // Visual Studio
-                bloques = 5; //0.32 GB
+                bloques = 5; // 0.32 GB
                 ciclos = 60;
                 nombrePrograma = "Visual Studio";
                 programas.add(nombrePrograma);
                 break;
 
             case 7: // Mail
-                bloques = 1; //0.032 GB
+                bloques = 1; // 0.032 GB
                 ciclos = 15;
                 nombrePrograma = "Mail";
                 programas.add(nombrePrograma);
                 break;
 
             case 8: // Contactos
-                bloques = 1; //0.032 GB
+                bloques = 1; // 0.032 GB
                 ciclos = 8;
                 nombrePrograma = "Contactos";
                 programas.add(nombrePrograma);
                 break;
 
             case 9: // Word
-                bloques = 16; //1.024 GB
+                bloques = 16; // 1.024 GB
                 ciclos = 10;
                 nombrePrograma = "Word";
                 programas.add(nombrePrograma);
@@ -79,19 +94,31 @@ public class Programa {
         }
     }
 
+    
+    /** 
+     * @return int
+     */
     public int bloques() {
         return bloques;
 
     }
 
     public void ciclos() {
-        ciclos++;
+        ciclos = ciclos - 1;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getCiclos() {
         return ciclos;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String nombrePrograma() {
         return nombrePrograma;
 
